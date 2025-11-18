@@ -11,15 +11,15 @@ public class CubeSplitHandler : MonoBehaviour
     
     private void OnEnable()
     {
-        _raycaster.RaycastCube += CheckSplitChance;
+        _raycaster.RaycastCube += HundleSplitChance;
     }
 
     private void OnDisable()
     {
-        _raycaster.RaycastCube -= CheckSplitChance;
+        _raycaster.RaycastCube -= HundleSplitChance;
     }
 
-    private void CheckSplitChance(Cube clickedCube)
+    private void HundleSplitChance(Cube clickedCube)
     {
         if (clickedCube.SplitChance >= Random.value)
         {
