@@ -3,6 +3,8 @@ using UnityEngine;
 public class Cube : MonoBehaviour
 {
     private Renderer _renderer;
+
+    public bool IsClicked { get; private set; } = false;
     
     public float SplitChance { get; private set; } = 1f;
     

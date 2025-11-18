@@ -10,17 +10,17 @@ public class Raycaster : MonoBehaviour
 
     private void OnEnable()
     {
-        _inputReader.OnInputEvent += HandleInput;
+        _inputReader.InputEvent += HandleInput;
     }
 
     private void OnDisable()
     {
-        _inputReader.OnInputEvent -= HandleInput;
+        _inputReader.InputEvent -= HandleInput;
     }
 
     private void HandleInput(Vector3 mousePosition)
     {
-        Ray ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
+        Ray ray = _mainCamera.ScreenPointToRay(mousePosition);
 
         if(Physics.Raycast(ray, out var hit))
         {
@@ -29,5 +29,5 @@ public class Raycaster : MonoBehaviour
                 RaycastCube?.Invoke(cube);
             }
         }
-    }
+    }   
 }

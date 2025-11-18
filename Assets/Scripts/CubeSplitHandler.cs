@@ -18,21 +18,22 @@ public class CubeSplitHandler : MonoBehaviour
     {
         _raycaster.RaycastCube -= CheckSplitChance;
     }
-    
-    public float ChanceMultiplier => _chanceMultiplier;
-    public float SizeMultiplier => _sizeMultiplier;
 
     private void CheckSplitChance(Cube clickedCube)
     {
-        if (clickedCube.SplitChance >= Random.Range(0f, 1f))
+        if (clickedCube.SplitChance >= Random.value)
         {
             _spawner.SpawnCubes(clickedCube);
+            _exploder.ExplodeNewCubes(clickedCube, _spawner.GetNewCubes);
         }
         else
         {
-            _exploder.Explode(clickedCube);
+            _exploder.ExplodeNearbyCubes(clickedCube);
         }
         
-        Destroy(clickedCube.gameObject);
+        _spawner.DeleteCube(clickedCube);
     }
+
+    public float ChanceMultiplier => _chanceMultiplier;
+    public float SizeMultiplier => _sizeMultiplier;
 }
