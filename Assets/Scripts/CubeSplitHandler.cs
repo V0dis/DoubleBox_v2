@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CubeSplitHandler : MonoBehaviour
@@ -23,8 +24,8 @@ public class CubeSplitHandler : MonoBehaviour
     {
         if (clickedCube.SplitChance >= Random.value)
         {
-            _spawner.SpawnCubes(clickedCube);
-            _exploder.ExplodeNewCubes(clickedCube, _spawner.GetNewCubes);
+            List<Cube> cubes = _spawner.SpawnCubes(clickedCube, _chanceMultiplier, _sizeMultiplier);
+            _exploder.ExplodeNewCubes(clickedCube, cubes);
         }
         else
         {
@@ -33,7 +34,4 @@ public class CubeSplitHandler : MonoBehaviour
         
         _spawner.DeleteCube(clickedCube);
     }
-
-    public float ChanceMultiplier => _chanceMultiplier;
-    public float SizeMultiplier => _sizeMultiplier;
 }

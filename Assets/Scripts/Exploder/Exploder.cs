@@ -26,7 +26,7 @@ public class Exploder : MonoBehaviour
     {
         ExploderCalculator.ExplosionData explosionData = _exploderCalculator.MakeExplosionData(explosionCube);
 
-        float explosionRadius = ExploderCalculator.GetScale(explosionCube) * _explosionRadiusMultiplier;
+        float explosionRadius = _exploderCalculator.CalculateScale(explosionCube) * _explosionRadiusMultiplier;
 
         Collider[] colliders = Physics.OverlapSphere(explosionData.ExplosionPosition, explosionRadius)
             .Where(cube => cube.gameObject != explosionCube.gameObject)

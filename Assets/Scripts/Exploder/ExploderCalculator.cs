@@ -4,15 +4,15 @@ public class ExploderCalculator : MonoBehaviour
 {
     [SerializeField] private float _baseExplosionForce = 20;
     
-    protected internal ExplosionData MakeExplosionData(Cube explosionCube)
+    protected internal  ExplosionData MakeExplosionData(Cube explosionCube)
     {
         Vector3 explosionPosition = explosionCube.transform.position;
-        float explosionForce = _baseExplosionForce / GetScale(explosionCube);
+        float explosionForce = _baseExplosionForce / CalculateScale(explosionCube);
 
         return new ExplosionData(explosionPosition, explosionForce);
     }
 
-    protected internal static float GetScale(Cube cube)
+    protected internal float CalculateScale(Cube cube)
     {
         Vector3 CubeScale = cube.gameObject.transform.lossyScale;
 
